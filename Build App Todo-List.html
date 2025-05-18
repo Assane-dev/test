@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+    body{
+        background-color:blueviolet;
+        color: white;
+        font-weight: bolder;
+        font-style: italic;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .container{
+        width: 350px;
+        padding: 70px 70px;
+        border-radius: 15px;
+        background-color: transparent;
+        box-shadow: 0 0 15px blue;
+        margin: 0 auto;
+        color: #fff;
+        font-weight: bolder;
+        font-style: italic;
+        border: solid 2px #fff;
+    }
+    h3{
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        padding: 0;
+        margin: 0   ;
+    }
+    input{
+        width: 280px;
+        height: 40px;
+        background-color: transparent;
+        border: solid 2px #fff;
+        border-radius: 15px ;
+        color: #fff;
+        font-weight: bolder;
+        font-style: italic;
+    }
+    .bx-plus-circle{
+        color: #fff;
+        font-size: 40px;
+    }
+    .div{
+        margin-top: 2%;
+        display: flex;
+        gap: 10px;
+    }
+    .Comp{
+        width: 200px;
+        height: 45px;
+        background-color: transparent;
+        border: solid 2px #fff;
+        border-radius: 15px;
+        color: #fff;
+        font-weight: bolder;
+        font-style: italic;
+    }
+    .buttons{
+        gap: 10px;
+        margin-top: 4%;
+        display: flex;
+    }
+    ul{
+       list-style: none;
+       margin-top: 4%;
+    }
+    li{
+        width: 250px;
+        height: 40px;
+        border: solid 2px #fff;
+        border-radius: 15px;
+        background-color: transparent;
+        font-weight: bolder;
+        font-style: italic;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    .delete-btn{
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        background-color: transparent;
+        color: red;
+        border: none;
+        margin-top: 4%;
+    }
+</style>
+<body>
+    <div class="container">
+        <h3>Todo-Liste</h3>
+        <div class="div">
+            <span><input type="text" name="" id="Tak-input"></span>
+            <span><i class='bx bx-plus-circle' onclick="addListe()"></i></span>
+        </div>
+        <div class="buttons">
+            <button class="Comp"><b>Complete</b></button>
+            <button  class="Comp">Incomplete</button>
+            <button onclick="clearListe()" class="Comp">Delete All</button>
+        </div>
+       
+<ul id="Tak-liste"></ul>
+    </div>
+    
+       <script>
+    function addListe() {
+        let input = document.getElementById('Tak-input');
+        if (!input.value) return;
+
+        let li = document.createElement('li');
+        li.textContent = input.value;
+
+        let btn = document.createElement('button');
+        btn.innerHTML = '<i class="bx bx-trash"></i>'; // Icône poubelle
+        btn.className = 'delete-btn';
+
+        btn.onclick = () => {
+            li.remove();
+        };
+
+        li.appendChild(btn);
+        document.getElementById('Tak-liste').appendChild(li);
+        input.value = ''; // <- Petit espace corrigé ici aussi
+    }
+
+    function clearListe() {
+        document.getElementById('Tak-liste').innerHTML = '';
+    }
+</script>
+
+    
+    
+</body>
+</html>
